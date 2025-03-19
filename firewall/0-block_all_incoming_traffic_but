@@ -1,18 +1,13 @@
-# Install ufw
-sudo apt update
-sudo apt install ufw
-
-# Set default policies
+#!/usr/bin/env bash
+# install Firewall (ufw)
+sudo apt-get install ufw
+# Configure ufw to blocks all incoming traffic
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-
-# Allow specific TCP ports
+# Except port traffic
 sudo ufw allow 22/tcp
-sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
-
-# Enable ufw
+sudo ufw allow 80/tcp
+# Restart service
+sudo ufw disable
 sudo ufw enable
-
-# Verify the rules
-sudo ufw status verbose
